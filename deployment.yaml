@@ -23,7 +23,7 @@ spec:
           image: gabibia/rutherford-scattering
           # Define ports to expose
           ports:
-            - containerPort: 80
+            - containerPort: 5000
               # Reference name of port
               name: http
           resources:
