@@ -20,7 +20,7 @@ spec:
       containers:
         - name: rutherford-scattering-container
           # Docker Hub image to use
-          image: rutherford-scattering
+          image: gabibia/rutherford-scattering
           # Define ports to expose
           ports:
             - containerPort: 80
