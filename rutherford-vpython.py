@@ -1,14 +1,14 @@
 from vpython import *
 
 Alphas = [] # pusta lista na wygenerowane cząstki
-dt = 0.1
+dt = 0.1 # krok (1/dt - szybkość animacji)
 k = 2e-5 # stała siły elektrycznej; kontroluje siłę interakcji
 
 
-def particle_definition(charge,radius):
+def particle_definition(charge,radius): # definicja atomu złota
     return sphere(pos=vector(0,0,0),color=color.yellow,charge=charge,radius=radius)
 
-def simulation_run(Gold):
+def simulation_run(Gold): # symulacja
     while (len(Alphas)<500): # animacja do momentu wystrzelenia ustalonej liczby cząstek alfa
         rate(1/dt) # szybkość animacji
 
@@ -27,7 +27,7 @@ def simulation_run(Gold):
             if (mag(a.pos) > sqrt(3)):
                 a.velocity = vector(0,0,0)
 
-def main():
+def main(): # wywołanie gotowej symulacji
     Gold = particle_definition(79,0.1)
     simulation_run(Gold)
 
