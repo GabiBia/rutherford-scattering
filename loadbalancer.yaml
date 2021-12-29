@@ -9,7 +9,7 @@ spec:
   # Type of Service to be deployed
   type: LoadBalancer
   ports:
-    - port: 80
+    - port: 5000
   # Used to tell the Service which Pods to associate with
   selector:
     app: rutherford-scattering
