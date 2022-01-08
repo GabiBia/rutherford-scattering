@@ -31,8 +31,8 @@ def getYY(qa, qb, r1, r2, mass): # obliczanie siły Coulomba
 
 @app.route('/') # dekorator Flask
 def simulation_run():
-    params = [] # pusta lista na wygenerowanie trajektorii cząsteczek helu
-    for i in range(-5, 6, 1): # określanie zakresu pojawiania się trajektorii cząsteczek na osiach
+    params = []
+    for i in range(-5, 6, 1): #zakres pojawiania się cząsteczek
         if i != 0:
             params.append(i*1e-14)
     for i in range(-50, 51, 10):
@@ -57,14 +57,14 @@ def simulation_run():
         prev_x = x0
         prev_y = y0
 
-        while np.isfinite(y) and -const < x < const and -5*const < y < 5*const: # wyświetlanie obliczonych  trajektorii
+        while np.isfinite(y) and -const < x < const and -5*const < y < 5*const:
             X.append(x)
             Y.append(y)
 
             constAx = getYY(q1, q2, x, y, m) * x / math.sqrt(x ** 2 + y ** 2)
             constAy = getYY(q1, q2, x, y, m) * y / math.sqrt(x ** 2 + y ** 2)
 
-            # położenia na osi
+            # aktualizacja położeń na osiach
             val1 = x
             x = h ** 2 * constAx + 2 * x - prev_x
             prev_x = val1
@@ -73,7 +73,7 @@ def simulation_run():
             y = h ** 2 * constAy + 2 * y - prev_y
             prev_y = val2
 
-            # prędkości cząstek poruszających wzdłuż osi
+            # aktualizacja prędkości cząstek poruszających wzdłuż osi
             val3 = Vx
             Vx = prev_Vx + constAx * h
             prev_Vx = val3
